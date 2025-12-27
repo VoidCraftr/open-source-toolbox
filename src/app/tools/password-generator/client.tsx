@@ -22,6 +22,7 @@ export default function PasswordGeneratorClient() {
         symbols: true,
     })
     const [history, setHistory] = useState<string[]>([])
+    const [copied, setCopied] = useState(false)
 
     const generatePassword = useCallback(() => {
         const sets = {
