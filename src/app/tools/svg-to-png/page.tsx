@@ -21,10 +21,10 @@ export default function SvgConverterPage() {
                 <section>
                     <h2 className="text-2xl font-semibold text-foreground mb-4">How to convert SVG to Image?</h2>
                     <ul className="list-disc pl-6 space-y-2">
-                        <li>**Upload**: Select your .svg file.</li>
-                        <li>**Scale**: Increase the scale factor (2x, 4x) to get a higher resolution image without blur.</li>
-                        <li>**Format**: Choose PNG for transparency or JPG for a smaller file size (white background).</li>
-                        <li>**Privacy**: Conversion happens entirely in your browser. Your files are never sent to our servers.</li>
+                        <li>Upload: Select your .svg file.</li>
+                        <li>Scale: Increase the scale factor (2x, 4x) to get a higher resolution image without blur.</li>
+                        <li>Format: Choose PNG for transparency or JPG for a smaller file size (white background).</li>
+                        <li>Privacy: Conversion happens entirely in your browser. Your files are never sent to our servers.</li>
                     </ul>
                 </section>
             </div>

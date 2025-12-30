@@ -25,9 +25,9 @@ export default function SocialPreviewPage() {
                         If these tags are missing or incorrect, your link might look broken or unappealing, reducing click-through rates.
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
-                        <li>**Debug OG Tags**: Ensure `og:title`, `og:image`, and `og:description` are correct.</li>
-                        <li>**Optimize CTR**: A compelling preview image and title significantly increase engagement.</li>
-                        <li>**Cross-Platform Check**: See previews for Facebook, Twitter, LinkedIn, and Google Search in one place.</li>
+                        <li>Debug OG Tags: Ensure `og:title`, `og:image`, and `og:description` are correct.</li>
+                        <li>Optimize CTR: A compelling preview image and title significantly increase engagement.</li>
+                        <li>Cross-Platform Check: See previews for Facebook, Twitter, LinkedIn, and Google Search in one place.</li>
                     </ul>
                 </section>
             </div>

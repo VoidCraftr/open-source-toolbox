@@ -10,7 +10,7 @@ import { Copy, FileDown, Eye, PenLine } from "lucide-react"
 
 const DEFAULT_MARKDOWN = `# Welcome to the Markdown Editor
 
-This is a **live preview** editor. Type in the left pane (or top pane on mobile) and see the result here.
+This is a live preview editor. Type in the left pane (or top pane on mobile) and see the result here.
 
 ## Features
 - live preview
