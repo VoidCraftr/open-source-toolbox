@@ -38,7 +38,7 @@ export default function Home() {
           </div>
 
           <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-            The Open Source <br className="hidden sm:inline" />
+            The Ultimate <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient bg-300%">
               Developer Toolbox
             </span>
@@ -46,7 +46,7 @@ export default function Home() {
 
           <p className="mx-auto max-w-[800px] text-muted-foreground md:text-xl lg:text-2xl font-light leading-relaxed">
             Beautifully designed, privacy-focused toolset for modern developers. <br className="hidden md:inline" />
-            <span className="text-foreground font-medium">No bloat. No tracking. Just code.</span>
+            <span className="text-foreground font-medium">Free forever. No tracking. Just code.</span>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-6">
@@ -55,12 +55,6 @@ export default function Home() {
                 Explore All Tools <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <a href="https://github.com/voidcraftr/OpenToolBox" target="_blank" rel="noreferrer">
-              <Button variant="outline" size="lg" className="h-12 px-8 rounded-full border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all hover:scale-105">
-                <Github className="mr-2 h-5 w-5" />
-                Star on GitHub
-              </Button>
-            </a>
           </div>
         </motion.div>
 
@@ -114,10 +108,10 @@ export default function Home() {
           </div>
           <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-primary/20 transition-colors">
             <div className="mx-auto w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mb-4">
-              <Code2 className="h-6 w-6" />
+              <Lock className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Open Source</h3>
-            <p className="text-muted-foreground">Transparent code. Inspect how it works, contribute, or fork it on GitHub.</p>
+            <h3 className="text-xl font-bold mb-2">Secure & Private</h3>
+            <p className="text-muted-foreground">No tracking pixels. No cookies. We respect your privacy and your code.</p>
           </div>
         </div>
       </section>

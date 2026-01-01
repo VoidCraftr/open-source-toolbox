@@ -71,11 +71,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
                                 Buy Coffee
                             </Button>
                         </Link>
-                        <div className="h-4 w-px bg-border/50 mx-2 hidden md:block" />
-                        <a href="https://github.com/voidcraftr/OpenToolBox" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 duration-200">
-                            <span className="sr-only">GitHub</span>
-                            <Github className="h-5 w-5" />
-                        </a>
                         <ModeToggle />
                     </div>
                 </header>

@@ -24,21 +24,32 @@ export const metadata: Metadata = {
     default: "OpenToolBox - Free Online Developer & Security Tools",
     template: "%s | OpenToolBox"
   },
-  description: "A comprehensive collection of free, open-source, and secure developer tools. JSON Formatter, Image Converter, Password Generator, and more. 100% Client-side privacy.",
+  description: "A comprehensive collection of free, privacy-focused, and secure developer tools. JSON Formatter, Image Converter, Password Generator, and more. 100% Client-side privacy.",
   keywords: [
-    "developer tools",
-    "online tools",
-    "free tools",
-    "json formatter",
-    "image converter",
-    "password generator",
-    "secure tools",
-    "client-side",
-    "open source",
-    "social media tools",
-    "seo tools",
-    "svg to png",
-    "css generator"
+    // Brand
+    "OpenToolbox", "free developers tools", "privacy focused tools", "secure online tools",
+
+    // Developer
+    "json formatter", "sql beautifier", "jwt decoder", "uuid generator", "cron schedule generator", "keycode finder",
+
+    // Media & Images
+    "image converter", "webp to png", "svg to png", "image resizer", "youtube thumbnail downloader",
+
+    // PDF
+    "image to pdf", "sign pdf online", "digital signature generator", "pdf tools",
+
+    // Security
+    "strong password generator", "password strength checker", "secure password",
+
+    // Web Design
+    "css box shadow generator", "css gradient generator", "css flexbox playground", "ui tools",
+
+    // Social
+    "social media preview", "whatsapp link generator", "instagram hashtags", "tweet to image",
+
+    // General / Productivity
+    "qr code generator", "unit converter", "word counter", "text diff viewer", "pomodoro timer",
+    "loan calculator", "bmi calculator", "age calculator"
   ],
   authors: [{ name: "VoidCraftr", url: "https://github.com/voidcraftr" }],
   creator: "VoidCraftr",

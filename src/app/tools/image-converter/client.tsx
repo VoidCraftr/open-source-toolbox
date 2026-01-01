@@ -217,26 +217,39 @@ export default function ImageConverterClient() {
             </div>
 
             <ContentSection
-                title="Image Converter Guide"
-                description={`Convert images instantly in your browser without uploading files to any server. \n\nOur tool uses advanced HTML5 Canvas technology to read, process, and convert your images locally. This ensures 100% privacy and lightning-fast speeds compared to traditional server-side converters.`}
+                title="The Most Secure Online Image Converter"
+                description={`Convert images instantly in your browser **without uploading files to any server**. \n\nMost online converters upload your personal photos to a remote cloud server to process them. This creates privacy risks and slows down the process. **OpenToolbox Image Converter** is different. We use advanced HTML5 Canvas technology to read, process, and convert your images **locally on your device**.\n\nThis ensures **100% privacy**, zero data usage for uploading, and lightning-fast speeds compared to traditional server-side converters.`}
                 features={[
-                    "Supports PNG, JPEG, and WebP",
-                    "Zero Server Uploads (Privacy Focused)",
-                    "No File Size Limits",
-                    "Instant Browser-based Conversion"
+                    "🔒 **Zero Server Uploads**: Your photos never leave your device.",
+                    "🖼️ **Multi-Format Support**: Convert between JPG, PNG, and WebP instantly.",
+                    "⚡ **Real-Time Preview**: See changes immediately before downloading.",
+                    "📉 **Smart Compression**: Adjust quality to reduce file size by up to 80%.",
+                    "🚀 **No Limits**: Convert as many images as you want, of any size.",
+                    "✨ **Transparency Support**: Preserves transparent backgrounds for PNG and WebP."
+                ]}
+                howToUse={[
+                    "Click the upload box or **Drag & Drop** your image file.",
+                    "Select your target format (e.g., **WebP** for websites, **JPG** for photos).",
+                    "Use the **Quality Slider** to balance file size vs. image clarity.",
+                    "Check the **'Saved'** stat to see how much space you are saving.",
+                    "Click **Download Image** to save the optimized file instantly."
                 ]}
                 faq={[
                     {
                         question: "Does this tool support transparent PNGs?",
-                        answer: "Yes! If you convert to PNG or WebP, transparency is preserved. Converting to JPEG will replace transparent areas with a white background."
+                        answer: "Yes! If you convert to PNG or WebP, **transparency is fully preserved**. However, converting to JPEG will replace transparent areas with a white background because JPEG does not support transparency."
                     },
                     {
-                        question: "Why convert to WebP?",
-                        answer: "WebP images are typically 25-34% smaller than comparable JPEG and PNG images, making your website load faster."
+                        question: "Why should I convert to WebP?",
+                        answer: "**WebP** is a modern image format that provides superior compression for images on the web. WebP images are typically **25-34% smaller** than comparable JPEG and PNG images, making your website load much faster."
                     },
                     {
                         question: "Is there a daily limit?",
-                        answer: "No. Since the conversion happens on your own device, there are no artificial limits. Convert as many images as you need."
+                        answer: "No. Since the conversion happens on your own device, there are **no artificial limits**. You can convert hundreds of images without hitting a paywall."
+                    },
+                    {
+                        question: "Will I lose image quality?",
+                        answer: "It depends on your settings. If you convert PNG to PNG, it is lossless (no quality loss). If you convert to JPEG/WebP, you can control the quality slider. We recommend **80-90% quality** for the best balance of size and clarity."
                     }
                 ]}
             />

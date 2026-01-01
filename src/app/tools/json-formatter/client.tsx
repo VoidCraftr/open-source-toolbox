@@ -156,26 +156,39 @@ export default function JsonFormatterClient() {
             )}
 
             <ContentSection
-                title="JSON Formatter & Validator Guide"
-                description={`JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.\n\nOur JSON Formatter helps developers debug, validate, and prettify JSON data instantly throughout their workflow. Since all processing happens locally in your browser, even sensitive data remains secure.`}
+                title="The Ultimate JSON Formatter & Validator"
+                description={`Stop struggling with messy, unreadable JSON data. Our **Free JSON Formatter** is the perfect tool for developers, data analysts, and students who need to debug, validate, and prettify JSON code instantly.\n\nUnlike other tools that send your possibly sensitive data to a remote server for processing, OpenToolbox performs **100% of the logic right here in your browser**. This means your API keys, user data, and configuration files never leave your device. \n\nWhether you are debugging an API response, minifying a payload for production, or just trying to read a massive configuration file, we've exactly what you need.`}
                 features={[
-                    "RFC 8259 Compliant Validation",
-                    "Local Client-Side Processing",
-                    "Minification for Payload Optimization",
-                    "Syntax Error Highlighting"
+                    "🔒 **100% Client-Side Privacy**: Your data never leaves your browser.",
+                    "⚡ **Instant Validation**: Detects syntax errors, missing quotes, and trailing commas immediately.",
+                    "🎨 **Syntax Highlighting**: Beautiful, easy-to-read color coding for keys, strings, and booleans.",
+                    "📦 **Minification**: Compress functionality to remove whitespace and reduce payload size.",
+                    "📂 **File Support**: Copy/Paste or Load huge JSON strings without crashing.",
+                    "🌙 **Dark Mode**: Easy on the eyes for late-night debugging sessions."
+                ]}
+                howToUse={[
+                    "Paste your raw / minified JSON code into the left 'Input' editor panels.",
+                    "Click the **Format / Prettify** button to organize messy code into a readable tree.",
+                    "Use **Minify** if you need to compress the data for production use.",
+                    "If there are errors, check the red alert box for detailed syntax correction hints.",
+                    "Once happy, click **Copy** or **Download** to save your clean JSON file."
                 ]}
                 faq={[
                     {
-                        question: "Is my data sent to a server?",
-                        answer: "No. All processing is performed client-side using JavaScript. Your data never leaves your browser."
+                        question: "Is it safe to paste API keys or passwords here?",
+                        answer: "Yes, it is safer than most other online tools. Because we run entirely in your browser (Client-Side), your text input is never sent over the internet. However, as a best practice, we always recommend redacting sensitive secrets before pasting them into any webpage."
                     },
                     {
-                        question: "Why is my JSON invalid?",
-                        answer: "Common issues include trailing commas, missing quotes around keys, or using single quotes instead of double quotes. Our tool highlights the exact position of the syntax error."
+                        question: "Why is my JSON showing as 'Invalid'?",
+                        answer: "JSON is strict! Common errors include: using single quotes (') instead of double quotes (\"), trailing commas after the last item in an object or array, or unquoted keys. Our tool tries to point out exactly line-by-line where the syntax broke."
                     },
                     {
-                        question: "What is the difference between formatting and minifying?",
-                        answer: "Formatting adds whitespace and indentation to make the JSON readable for humans. Minifying removes all unnecessary whitespace to reduce the file size for transmission."
+                        question: "Is there a file size limit?",
+                        answer: "Technically, no. Since it runs on your machine, the limit is your own browser's memory (RAM). You can formatting files up to 5MB-10MB easily. For files larger than 50MB, the browser might stutter."
+                    },
+                    {
+                        question: "Can I use this offline?",
+                        answer: "Yes! Once this page is loaded, you can disconnect your internet and continue using the tool indefinitely. It does not require an active connection to format code."
                     }
                 ]}
             />

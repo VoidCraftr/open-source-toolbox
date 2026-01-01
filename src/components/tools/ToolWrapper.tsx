@@ -1,5 +1,5 @@
+import { ShareButton } from "@/components/tools/ShareButton"
 import { Separator } from "@/components/ui/separator"
-import { AdBanner } from "@/components/ads/AdBanner"
 import { RelatedTools } from "@/components/tools/RelatedTools"
 import { DonationSection } from "@/components/common/DonationSection"
 
@@ -24,11 +24,16 @@ export function ToolWrapper({
 }: ToolWrapperProps) {
     return (
         <div className={cn("mx-auto max-w-4xl space-y-2 md:space-y-6", className)}>
-            <div className="space-y-2 text-center md:text-left">
-                <h1 className="text-3xl font-bold tracking-tighter md:text-4xl text-foreground">
-                    {title}
-                </h1>
-                <p className="text-lg text-muted-foreground">{description}</p>
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div className="space-y-2 text-center md:text-left">
+                    <h1 className="text-3xl font-bold tracking-tighter md:text-4xl text-foreground">
+                        {title}
+                    </h1>
+                    <p className="text-lg text-muted-foreground">{description}</p>
+                </div>
+                <div className="flex justify-center md:justify-end shrink-0">
+                    <ShareButton title={title} text={description} />
+                </div>
             </div>
 
             <Separator />
@@ -38,7 +43,8 @@ export function ToolWrapper({
             </div>
 
             {toolSlug && (
-                <div className="mt-16">
+                <div className="mt-20">
+                    <Separator className="mb-10" />
                     <RelatedTools currentSlug={toolSlug} />
                 </div>
             )}

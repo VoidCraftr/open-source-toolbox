@@ -186,26 +186,39 @@ export default function PasswordGeneratorClient() {
             </div>
 
             <ContentSection
-                title="Password Generator Guide"
-                description={`Generate strong, random passwords to protect your online accounts. \n\nSecurity experts recommend using passwords that are at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and symbols.`}
+                title="The Most Secure Password Generator"
+                description={`Generate strong, unhackable passwords instantly in your browser. \n\nIn an age of data breaches, using "Password123" is no longer an option. **OpenToolbox Password Generator** uses your browser's cryptographically secure random number generator (CSPRNG) to create bank-grade passwords that are mathematically impossible to guess.\n\nBecause the generation happens **100% on your device**, we never see, store, or transmit your passwords. It is the safest way to generate credentials.`}
                 features={[
-                    "Client-Side Generation (Secure)",
-                    "Customizable Character Sets",
-                    "Password Strength Indicator",
-                    "One-Click Copy"
+                    "🔒 **Client-Side Only**: Passwords are generated locally and never sent to any server.",
+                    "🛡️ **Bank-Grade Entropy**: Uses crypto.getRandomValues() for maximum randomness.",
+                    "📏 **Customizable Length**: Generate passwords from 6 to 64 characters.",
+                    "⚡ **Instant Strength Meter**: Visual feedback on how secure your password is.",
+                    "📜 **Local History**: Temporarily remembers your last 8 generated passwords (cleared on refresh).",
+                    "📋 **One-Click Copy**: Securely copy to clipboard with auto-clear protection."
+                ]}
+                howToUse={[
+                    "Use the **Length Slider** to choose a password length (we recommend 16+).",
+                    "Toggle **Options** to include Symbols, Numbers, and Uppercase letters.",
+                    "Click the **Refresh Icon** to generate a new unique combination.",
+                    "Check the **Strength Bar** to ensure it is 'Very Strong' (Green).",
+                    "Click the **Copy Button** to save it to your password manager."
                 ]}
                 faq={[
                     {
-                        question: "Are these passwords stored?",
-                        answer: "No. The passwords are generated locally in your browser using the JavaScript Crypto API. We never see or store your passwords."
-                    },
-                    {
-                        question: "Why do I need symbols?",
-                        answer: "Symbols increase the entropy (randomness) of your password, making it exponentially harder for brute-force algorithms to guess."
+                        question: "Can you see the passwords I generate?",
+                        answer: "Absolutely not. Because this tool runs entirely in your browser using JavaScript, the passwords strictly live in your device's ephemeral memory. We have no backend database to store them."
                     },
                     {
                         question: "How long should my password be?",
-                        answer: "We recommend at least 16 characters for critical accounts like email and banking, and 12 characters for other services."
+                        answer: "For critical accounts (Banking, Email, Cloud), we recommend at least **16 characters** with a mix of symbols and numbers. For less critical sites, 12 characters is usually sufficient. 8 characters is considered weak by modern standards."
+                    },
+                    {
+                        question: "Why do I need symbols?",
+                        answer: "Symbols (!@#$) increase the 'entropy' (randomness) of your password, making it exponentially harder for brute-force algorithms to guess. A 12-character password with symbols is often stronger than a 16-character password with only letters."
+                    },
+                    {
+                        question: "Is the history saved permanently?",
+                        answer: "No. The 'Recently Generated' history is only stored in your browser's temporary memory (RAM) for the current session. If you refresh the page, it is wiped forever for your security."
                     }
                 ]}
             />

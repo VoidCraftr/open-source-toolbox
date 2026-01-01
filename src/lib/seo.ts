@@ -17,17 +17,19 @@ export function constructMetadata({
 }: SEOProps): Metadata {
     return {
         title: {
-            default: `${title} - OpenToolbox`,
+            default: `${title} - Free & Secure Tools | OpenToolbox`,
             template: `%s - OpenToolbox`,
         },
         description,
         keywords: [
             "developer tools",
-            "open source",
-            "privacy first",
-            "offline tools",
-            "web utilities",
-            "nextjs",
+            "free online tools",
+            "privacy focused",
+            "secure client-side tools",
+            "no-tracking utilities",
+            "web dev productivity",
+            "pdf tools free",
+            "image converter online",
             ...keywords,
         ],
         authors: [{ name: "VoidCraftr", url: "https://opentoolbox.online" }],
