@@ -82,6 +82,9 @@ export const metadata: Metadata = {
     description: "Secure, fast, and free online tools for developers and creators.",
     creator: "@voidcraftr",
   },
+  icons: {
+    shortcut: "/assets/favicon.ico",
+  },
 };
 
 export default function RootLayout({

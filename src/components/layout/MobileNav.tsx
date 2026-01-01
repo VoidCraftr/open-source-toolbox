@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, Package2 } from "lucide-react"
 
@@ -36,7 +37,14 @@ export function MobileNav() {
                 <SheetHeader className="px-1 pt-6 text-left">
                     <SheetTitle>
                         <Link href="/" onClick={() => setOpen(false)} className="flex items-center pl-2">
-                            <Package2 className="mr-2 h-5 w-5 text-primary" />
+                            <Image
+                                src="/assets/OpenToolBox_Logo.png"
+                                alt="OpenToolBox"
+                                width={32}
+                                height={32}
+                                sizes="100vw"
+                                className="w-auto h-8 shrink-0 rounded-sm"
+                            />
                             <span className="font-bold text-lg">OpenToolbox</span>
                         </Link>
                     </SheetTitle>

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { AppSidebar } from "@/components/layout/AppSidebar"
 import { Footer } from "@/components/common/Footer"
@@ -32,7 +33,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
                         <MobileNav />
                         <Link href="/" className="flex items-center gap-2 group md:hidden">
                             <div className="bg-primary/10 p-1.5 rounded-lg group-hover:bg-primary/20 transition-colors">
-                                <Package2 className="h-5 w-5 text-primary" />
+                                <Image
+                                    src="/assets/OpenToolBox_Logo.png"
+                                    alt="OpenToolBox"
+                                    width={32}
+                                    height={32}
+                                    sizes="100vw"
+                                    className="w-auto h-8 shrink-0 rounded-sm"
+                                />
                             </div>
                             <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">OpenToolBox</span>
                         </Link>

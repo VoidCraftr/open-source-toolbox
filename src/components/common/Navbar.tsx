@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, Package2 } from "lucide-react"
 import { ModeToggle } from "@/components/common/ModeToggle"
 import { Button } from "@/components/ui/button"
@@ -12,7 +13,14 @@ export function Navbar() {
             <div className="container flex h-14 items-center">
                 <div className="mr-4 hidden md:flex">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Package2 className="h-6 w-6" />
+                        <Image
+                            src="/assets/OpenToolBox_Logo.png"
+                            alt="OpenToolBox"
+                            width={32}
+                            height={32}
+                            sizes="100vw"
+                            className="w-auto h-8 shrink-0 rounded-sm"
+                        />
                         <span className="hidden font-bold sm:inline-block">
                             OpenToolbox
                         </span>
@@ -50,7 +58,14 @@ export function Navbar() {
                     </SheetTrigger>
                     <SheetContent side="left" className="pr-0">
                         <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
-                            <Package2 className="h-6 w-6" />
+                            <Image
+                                src="/assets/OpenToolBox_Logo.png"
+                                alt="OpenToolBox"
+                                width={32}
+                                height={32}
+                                sizes="100vw"
+                                className="w-auto h-8 shrink-0 rounded-sm"
+                            />
                             <span className="sr-only">OpenToolbox</span>
                         </Link>
                         <nav className="mt-8 flex flex-col gap-4">

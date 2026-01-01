@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Package2, PanelLeftClose, PanelLeftOpen, ChevronRight, ChevronDown } from "lucide-react"
 
@@ -49,16 +50,30 @@ export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
                     isCollapsed ? "w-[60px]" : "w-64 lg:w-72"
                 )}
             >
-                <div className={cn("flex h-14 items-center border-b border-white/5 px-4 lg:h-[60px]", isCollapsed ? "justify-center px-2" : "px-6")}>
+                <div className={cn("flex pt-2 h-14 items-center border-b border-white/5 px-4 lg:h-[60px]", isCollapsed ? "justify-center px-2" : "px-6")}>
                     {!isCollapsed && (
                         <Link href="/" className="flex items-center gap-2 font-semibold truncate hover:text-primary transition-colors">
-                            <Package2 className="h-6 w-6 shrink-0 text-primary" />
+
+                            <Image
+                                src="/assets/OpenToolBox_Logo.png"
+                                alt="OpenToolBox"
+                                width={32}
+                                height={32}
+                                sizes="100vw"
+                                className="w-auto h-8 shrink-0 rounded-sm"
+                            />
                             <span className="tracking-tight">OpenToolBox</span>
                         </Link>
                     )}
                     {isCollapsed && (
                         <Link href="/" className="flex items-center justify-center">
-                            <Package2 className="h-6 w-6 shrink-0 text-primary" />
+                            <Image
+                                src="/assets/OpenToolBox_Logo.png"
+                                alt="OpenToolBox"
+                                width={32}
+                                height={32}
+                                className="shrink-0 rounded-sm data-[collapsed=true]:object-contain"
+                            />
                         </Link>
                     )}
 
