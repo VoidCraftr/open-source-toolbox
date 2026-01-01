@@ -79,8 +79,9 @@ export default function JsonFormatterClient() {
             description="Format, prettify, and validate your JSON data. Secure, client-side processing."
             toolSlug="json-formatter"
             adSlot="json-tool-slot"
+            className="max-w-7xl"
         >
-            <div className="grid gap-6 md:grid-cols-2 h-[500px]">
+            <div className="grid gap-6 md:grid-cols-2 h-[500px] lg:h-[calc(100vh-350px)] min-h-[400px]">
                 <div className="space-y-2 flex flex-col h-full">
                     <div className="flex items-center justify-between shrink-0">
                         <h3 className="text-lg font-medium">Input JSON</h3>

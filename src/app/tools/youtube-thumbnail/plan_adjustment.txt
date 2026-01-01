@@ -1,0 +1,42 @@
+"use client"
+
+import { useState } from "react"
+import { Download, Search, Image as ImageIcon } from "lucide-react"
+import { ToolWrapper } from "@/components/tools/ToolWrapper"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { constructMetadata } from "@/lib/seo"
+import { ContentSection } from "@/components/tools/ContentSection"
+
+const metadata = constructMetadata({
+    title: "YouTube Thumbnail Downloader",
+    description: "Download high-quality thumbnails from any YouTube video. Supports HD, SD, and HQ resolutions.",
+    keywords: ["youtube thumbnail", "thumbnail downloader", "youtube image", "youtube cover", "save thumbnail"]
+})
+
+// We need to export metadata from a server component or layout in Next.js 13+, but this is a client component.
+// However, typically page.tsx is a Server Component by default unless "use client" is at the top.
+// Since we have "use client", we cannot export metadata directly if we are strict. 
+// BUT, often people separate the client logic. 
+// For this structure, I will keep "use client" as it was before, BUT to support metadata properly in the App Router, 
+// the `metadata` export needs to be in a Server Component. 
+// The current architecture seems to mix them. I will follow the pattern of other tools if they do this, 
+// OR I will remove `use client` from the top and move the logic to a separate `client.tsx`.
+// Looking at previous file views (e.g., json-formatter), they use `page.tsx` (server) -> `client.tsx` (client).
+// These new tools were created as single `page.tsx` files with `use client`.
+// To do this RIGHT, I should split them.
+// Step 1: Rename current logic to `client.tsx`.
+// Step 2: Create new `page.tsx` with metadata.
+
+// Actually, to save time/complexity and match what I likely did for other tools that might have been single file (if any),
+// I will just implement the client logic here. 
+// Wait, `constructMetadata` usage implies Server Component. 
+// If I keep `use client`, `export const metadata` will ERROR in Next.js.
+// So I MUST split them or remove `use client` and make it interactive... wait, interactivity needs client.
+// So splitting is the ONLY correct way.
+
+// CORRECT PLAN:
+// 1. Write `client.tsx` with the interactive component.
+// 2. Write `page.tsx` with the metadata and import the client component.

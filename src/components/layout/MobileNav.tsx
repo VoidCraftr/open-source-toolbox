@@ -12,7 +12,7 @@ import {
     SheetHeader,
     SheetTitle
 } from "@/components/ui/sheet"
-import { ScrollArea } from "@/components/ui/scroll-area"
+
 import { categories, tools } from "@/config/tools"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
@@ -41,8 +41,8 @@ export function MobileNav() {
                         </Link>
                     </SheetTitle>
                 </SheetHeader>
-                <ScrollArea className="flex-1 -ml-6 pl-6 pr-6">
-                    <div className="flex flex-col space-y-4 py-4 pb-10">
+                <div className="flex-1 overflow-y-auto -ml-6 pl-6 pr-6 py-2">
+                    <div className="flex flex-col space-y-4 pb-10">
                         {categories.map((category) => (
                             <div key={category.id} className="py-2">
                                 <h4 className="font-semibold mb-2 flex items-center gap-2 text-sm text-muted-foreground uppercase tracking-wider">
@@ -66,7 +66,7 @@ export function MobileNav() {
                             </div>
                         ))}
                     </div>
-                </ScrollArea>
+                </div>
             </SheetContent>
         </Sheet>
     )

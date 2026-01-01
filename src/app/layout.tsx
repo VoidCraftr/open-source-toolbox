@@ -19,8 +19,53 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OpenToolBox - Free Online Developer & Security Tools",
+  title: {
+    default: "OpenToolBox - Free Online Developer & Security Tools",
+    template: "%s | OpenToolBox"
+  },
   description: "A comprehensive collection of free, open-source, and secure developer tools. JSON Formatter, Image Converter, Password Generator, and more. 100% Client-side privacy.",
+  keywords: [
+    "developer tools",
+    "online tools",
+    "json formatter",
+    "image converter",
+    "password generator",
+    "secure tools",
+    "client-side",
+    "open source",
+    "social media tools",
+    "seo tools",
+    "svg to png",
+    "css generator"
+  ],
+  authors: [{ name: "VoidCraftr", url: "https://github.com/voidcraftr" }],
+  creator: "VoidCraftr",
+  publisher: "OpenToolBox",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://opentoolbox.io", // Replace with actual domain when live
+    title: "OpenToolBox - Free Online Developer & Security Tools",
+    description: "Secure, fast, and free online tools for developers and creators. No server-side processing.",
+    siteName: "OpenToolBox",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OpenToolBox - Free Online Developer Tools",
+    description: "Secure, fast, and free online tools for developers and creators.",
+    creator: "@voidcraftr",
+  },
 };
 
 export default function RootLayout({

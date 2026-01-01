@@ -75,6 +75,7 @@ export default function DiffViewerClient() {
             description="Compare code snippets or text files side-by-side. Highlights differences with syntax coloring."
             toolSlug="diff-viewer"
             adSlot="diff-viewer-slot"
+            className="max-w-[1600px]"
         >
             <div className="space-y-6">
                 {/* Controls */}
@@ -120,7 +121,7 @@ export default function DiffViewerClient() {
                             <span className="bg-muted px-2 py-0.5 rounded text-xs">1</span> Original Text
                         </h3>
                         <Textarea
-                            className="font-mono h-[300px] resize-y focus-visible:ring-1"
+                            className="font-mono h-[300px] lg:h-[35vh] resize-y focus-visible:ring-1"
                             placeholder="Paste original content here..."
                             value={original}
                             onChange={(e) => setOriginal(e.target.value)}
@@ -128,7 +129,7 @@ export default function DiffViewerClient() {
                     </div>
 
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block">
-                        <Button variant="outline" size="icon" className="rounded-full shadow-md" onClick={handleSwap} title="Swap Inputs">
+                        <Button variant="outline" size="icon" className="rounded-full shadow-md px-0 w-9 h-9" onClick={handleSwap} title="Swap Inputs">
                             <ArrowLeftRight className="h-4 w-4" />
                         </Button>
                     </div>
@@ -143,7 +144,7 @@ export default function DiffViewerClient() {
                             </Button>
                         </div>
                         <Textarea
-                            className="font-mono h-[300px] resize-y focus-visible:ring-1"
+                            className="font-mono h-[300px] lg:h-[35vh] resize-y focus-visible:ring-1"
                             placeholder="Paste changed content here..."
                             value={modified}
                             onChange={(e) => setModified(e.target.value)}
@@ -167,7 +168,7 @@ export default function DiffViewerClient() {
                 {showDiff && (
                     <div id="diff-result" className="space-y-2 animate-in fade-in slide-in-from-top-4 duration-500">
                         <h3 className="text-lg font-semibold text-center pb-2">Comparison Result</h3>
-                        <div className="border rounded-md overflow-hidden shadow-sm h-[600px] bg-[#1e1e1e]">
+                        <div className="border rounded-md overflow-hidden shadow-sm h-[600px] lg:h-[70vh] min-h-[500px] bg-[#1e1e1e]">
                             <DiffEditor
                                 height="100%"
                                 language={language}

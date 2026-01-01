@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Package2, Search, PanelLeftClose, PanelLeftOpen } from "lucide-react"
+import { Package2, PanelLeftClose, PanelLeftOpen, ChevronRight, ChevronDown } from "lucide-react"
 
 import { categories, tools } from "@/config/tools"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState, useEffect } from "react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 interface AppSidebarProps {
@@ -18,6 +18,28 @@ interface AppSidebarProps {
 
 export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
     const pathname = usePathname()
+    const [expandedCategories, setExpandedCategories] = useState<string[]>([])
+
+    // Initialize expanded categories based on current path
+    useEffect(() => {
+        const activeTool = tools.find(t => pathname.includes(t.slug))
+        if (activeTool) {
+            setExpandedCategories(prev => {
+                if (!prev.includes(activeTool.category)) {
+                    return [...prev, activeTool.category]
+                }
+                return prev
+            })
+        }
+    }, [pathname])
+
+    const toggleCategory = (categoryId: string) => {
+        setExpandedCategories(prev =>
+            prev.includes(categoryId)
+                ? prev.filter(c => c !== categoryId)
+                : [...prev, categoryId]
+        )
+    }
 
     return (
         <TooltipProvider delayDuration={0}>
@@ -29,21 +51,21 @@ export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
             >
                 <div className={cn("flex h-14 items-center border-b px-4 lg:h-[60px] bg-background", isCollapsed ? "justify-center px-2" : "px-6")}>
                     {!isCollapsed && (
-                        <Link href="/" className="flex items-center gap-2 font-semibold truncate">
-                            <Package2 className="h-6 w-6 shrink-0" />
-                            <span className="">OpenToolbox</span>
+                        <Link href="/" className="flex items-center gap-2 font-semibold truncate hover:text-primary transition-colors">
+                            <Package2 className="h-6 w-6 shrink-0 text-primary" />
+                            <span className="">OpenToolBox</span>
                         </Link>
                     )}
                     {isCollapsed && (
                         <Link href="/" className="flex items-center justify-center">
-                            <Package2 className="h-6 w-6 shrink-0" />
+                            <Package2 className="h-6 w-6 shrink-0 text-primary" />
                         </Link>
                     )}
 
                     <Button
                         variant="ghost"
                         size="icon"
-                        className={cn("ml-auto h-8 w-8 text-muted-foreground", isCollapsed && "hidden")}
+                        className={cn("ml-auto h-8 w-8 text-muted-foreground hover:text-foreground", isCollapsed && "hidden")}
                         onClick={() => setIsCollapsed(true)}
                     >
                         <PanelLeftClose className="h-4 w-4" />
@@ -57,16 +79,24 @@ export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
                                 <Button
                                     variant="ghost"
                                     size="icon"
-                                    className="h-8 w-8"
+                                    className="h-8 w-8 mb-2"
                                     onClick={() => setIsCollapsed(false)}
                                 >
                                     <PanelLeftOpen className="h-4 w-4" />
                                 </Button>
                                 {categories.map(cat => (
-                                    <div key={cat.id} className="pt-2">
+                                    <div key={cat.id} className="pt-1">
                                         <Tooltip>
                                             <TooltipTrigger asChild>
-                                                <div className="p-2 text-muted-foreground hover:text-foreground cursor-default">
+                                                <div
+                                                    className="p-2 text-muted-foreground hover:text-primary hover:bg-muted rounded-md cursor-pointer transition-colors"
+                                                    onClick={() => {
+                                                        setIsCollapsed(false)
+                                                        if (!expandedCategories.includes(cat.id)) {
+                                                            toggleCategory(cat.id)
+                                                        }
+                                                    }}
+                                                >
                                                     <cat.icon className="h-4 w-4" />
                                                 </div>
                                             </TooltipTrigger>
@@ -82,46 +112,74 @@ export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
                         {!isCollapsed && (
                             <>
                                 <div className="py-2">
-                                    <h2 className="mb-2 px-4 text-xs font-semibold tracking-tight text-muted-foreground uppercase">
-                                        Discover
-                                    </h2>
-                                    <div className="space-y-1">
-                                        <Link href="/tools">
-                                            <Button variant={pathname === "/tools" ? "secondary" : "ghost"} className="w-full justify-start font-normal">
-                                                <span className="ml-2">All Tools</span>
-                                            </Button>
-                                        </Link>
-                                    </div>
+                                    <Link href="/tools">
+                                        <Button variant={pathname === "/tools" ? "secondary" : "ghost"} className="w-full justify-start font-medium text-sm h-9">
+                                            <Package2 className="mr-2 h-4 w-4" />
+                                            All Tools
+                                        </Button>
+                                    </Link>
                                 </div>
 
-                                {categories.map((category) => (
-                                    <div key={category.id} className="py-2">
-                                        <h2 className="mb-2 px-4 text-xs font-semibold tracking-tight text-muted-foreground uppercase flex items-center gap-2">
-                                            <category.icon className="h-3 w-3" />
-                                            {category.label}
-                                        </h2>
-                                        <div className="space-y-1">
-                                            {tools
-                                                .filter(t => t.category === category.id)
-                                                .map((tool) => (
-                                                    <Link key={tool.slug} href={`/tools/${tool.slug}`}>
-                                                        <Button
-                                                            variant={pathname.includes(tool.slug) ? "secondary" : "ghost"}
-                                                            className={cn("w-full justify-start font-normal h-9", pathname.includes(tool.slug) && "bg-muted font-medium")}
-                                                        >
-                                                            <tool.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                                                            <span className="truncate">{tool.name}</span>
-                                                            {tool.isNew && <span className="ml-auto text-[10px] font-bold text-blue-500">NEW</span>}
-                                                        </Button>
-                                                    </Link>
-                                                ))}
+                                {categories.map((category) => {
+                                    const isExpanded = expandedCategories.includes(category.id)
+                                    const categoryTools = tools.filter(t => t.category === category.id)
+                                    if (categoryTools.length === 0) return null
+
+                                    return (
+                                        <div key={category.id} className="mb-1">
+                                            <Button
+                                                variant="ghost"
+                                                className="w-full justify-between hover:bg-muted/50 h-9 px-2 group"
+                                                onClick={() => toggleCategory(category.id)}
+                                            >
+                                                <div className="flex items-center gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
+                                                    <category.icon className="h-4 w-4" />
+                                                    <span className="font-medium text-sm">{category.label}</span>
+                                                </div>
+                                                {isExpanded ?
+                                                    <ChevronDown className="h-3 w-3 text-muted-foreground/50" /> :
+                                                    <ChevronRight className="h-3 w-3 text-muted-foreground/50" />
+                                                }
+                                            </Button>
+
+                                            {isExpanded && (
+                                                <div className="mt-1 ml-4 border-l border-border/50 pl-2 space-y-0.5 animate-in slide-in-from-left-1 fade-in duration-200">
+                                                    {categoryTools.map((tool) => (
+                                                        <Link key={tool.slug} href={`/tools/${tool.slug}`}>
+                                                            <Button
+                                                                variant="ghost"
+                                                                className={cn(
+                                                                    "w-full justify-start font-normal h-8 text-sm",
+                                                                    pathname.includes(tool.slug) ? "bg-accent/50 text-accent-foreground font-medium" : "text-muted-foreground/80 hover:text-foreground"
+                                                                )}
+                                                            >
+                                                                <span className="truncate">{tool.name}</span>
+                                                                {tool.isNew && <span className="ml-auto text-[9px] uppercase font-bold text-blue-500 bg-blue-500/10 px-1.5 py-0.5 rounded-full">New</span>}
+                                                            </Button>
+                                                        </Link>
+                                                    ))}
+                                                    {/* Add hints for future tools if needed */}
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
-                                ))}
+                                    )
+                                })}
                             </>
                         )}
                     </div>
                 </ScrollArea>
+                <div className="p-4 border-t bg-muted/5">
+                    {!isCollapsed && (
+                        <div className="bg-gradient-to-r from-pink-500/10 to-orange-500/10 rounded-lg p-3 border border-pink-500/20">
+                            <p className="text-xs font-medium text-pink-600 dark:text-pink-400 mb-2">Support This Project</p>
+                            <Link href="https://buymeacoffee.com/voidcraftr" target="_blank">
+                                <Button size="sm" variant="outline" className="w-full h-7 text-xs border-pink-200 dark:border-pink-800 hover:bg-pink-50 dark:hover:bg-pink-950/30">
+                                    Donate
+                                </Button>
+                            </Link>
+                        </div>
+                    )}
+                </div>
             </div>
         </TooltipProvider>
     )

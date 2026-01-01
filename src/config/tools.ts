@@ -27,7 +27,9 @@ import {
     FileUp,
     ShieldCheck,
     MessageCircle,
-    TimerReset
+    TimerReset,
+    Hash,
+    Twitter
 } from "lucide-react"
 
 export type ToolCategory = "developer" | "design" | "security" | "media" | "text" | "social" | "general" | "math" | "finance" | "health" | "pdf"
@@ -314,6 +316,22 @@ export const tools: ToolMetadata[] = [
         description: "Generate direct WhatsApp links with pre-filled messages.",
         category: "social",
         icon: MessageCircle,
+        isNew: true,
+    },
+    {
+        slug: "instagram-hashtags",
+        name: "Instagram Hashtags",
+        description: "Generate trending hashtags for Instagram to boost reach.",
+        category: "social",
+        icon: Hash,
+        isNew: true,
+    },
+    {
+        slug: "tweet-to-image",
+        name: "Tweet to Image",
+        description: "Convert tweets into beautiful shareable images.",
+        category: "social",
+        icon: Twitter,
         isNew: true,
     },
 

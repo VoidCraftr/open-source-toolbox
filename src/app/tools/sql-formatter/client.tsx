@@ -54,8 +54,9 @@ export default function SqlFormatterClient() {
             description="Beautify and standardise SQL queries. Supports MySQL, PostgreSQL, SQLite, and more."
             toolSlug="sql-formatter"
             adSlot="sql-formatter-slot"
+            className="max-w-7xl"
         >
-            <div className="grid gap-6 lg:grid-cols-2 h-[500px]">
+            <div className="grid gap-6 lg:grid-cols-2 h-[500px] lg:h-[calc(100vh-350px)] min-h-[400px]">
                 <div className="space-y-2 flex flex-col h-full">
                     <div className="flex justify-between items-center shrink-0">
                         <Select value={dialect} onValueChange={setDialect}>
