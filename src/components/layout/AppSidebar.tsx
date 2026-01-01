@@ -45,15 +45,15 @@ export function AppSidebar({ isCollapsed, setIsCollapsed }: AppSidebarProps) {
         <TooltipProvider delayDuration={0}>
             <div
                 className={cn(
-                    "hidden border-r bg-muted/10 md:flex h-screen flex-col fixed left-0 top-0 overflow-hidden transition-all duration-300 ease-in-out z-40 bg-background",
+                    "hidden border-r border-white/5 md:flex h-screen flex-col fixed left-0 top-0 overflow-hidden transition-all duration-300 ease-in-out z-40 bg-background/60 backdrop-blur-xl",
                     isCollapsed ? "w-[60px]" : "w-64 lg:w-72"
                 )}
             >
-                <div className={cn("flex h-14 items-center border-b px-4 lg:h-[60px] bg-background", isCollapsed ? "justify-center px-2" : "px-6")}>
+                <div className={cn("flex h-14 items-center border-b border-white/5 px-4 lg:h-[60px]", isCollapsed ? "justify-center px-2" : "px-6")}>
                     {!isCollapsed && (
                         <Link href="/" className="flex items-center gap-2 font-semibold truncate hover:text-primary transition-colors">
                             <Package2 className="h-6 w-6 shrink-0 text-primary" />
-                            <span className="">OpenToolBox</span>
+                            <span className="tracking-tight">OpenToolBox</span>
                         </Link>
                     )}
                     {isCollapsed && (
