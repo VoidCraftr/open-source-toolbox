@@ -1,15 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Share2, Check, Copy } from "lucide-react"
+import { Share2, Check, Copy, Share, Mail, Twitter, Linkedin, Facebook } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 import { toast } from "sonner"
+import { cn } from "@/lib/utils"
 
 interface ShareButtonProps {
     title: string
@@ -19,14 +22,8 @@ interface ShareButtonProps {
 
 export function ShareButton({ title, text, url }: ShareButtonProps) {
     const [copied, setCopied] = useState(false)
-    const [isNativeShare, setIsNativeShare] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "")
-
-    useEffect(() => {
-        if (typeof navigator !== "undefined" && typeof navigator.share === 'function') {
-            setIsNativeShare(true)
-        }
-    }, [])
 
     const handleCopy = () => {
         navigator.clipboard.writeText(shareUrl)
@@ -35,55 +32,105 @@ export function ShareButton({ title, text, url }: ShareButtonProps) {
         setTimeout(() => setCopied(false), 2000)
     }
 
-    const handleNativeShare = async () => {
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title,
-                    text,
-                    url: shareUrl,
-                })
-            } catch (err) {
-                console.error("Error sharing:", err)
-            }
+    const socialLinks = [
+        {
+            name: "Facebook",
+            icon: Facebook,
+            color: "bg-[#1877F2]",
+            onClick: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank')
+        },
+        {
+            name: "X (Twitter)",
+            icon: Twitter,
+            color: "bg-black dark:bg-white dark:text-black",
+            onClick: () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, '_blank')
+        },
+        {
+            name: "LinkedIn",
+            icon: Linkedin,
+            color: "bg-[#0A66C2]",
+            onClick: () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank')
+        },
+        {
+            name: "Email",
+            icon: Mail,
+            color: "bg-gray-600",
+            onClick: () => window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + "\n\n" + shareUrl)}`
+        },
+        {
+            name: "Copy Link",
+            icon: copied ? Check : Copy,
+            color: copied ? "bg-green-500" : "bg-primary",
+            onClick: handleCopy
         }
-    }
-
-    if (isNativeShare) {
-        return (
-            <Button variant="outline" size="sm" onClick={handleNativeShare} className="gap-2">
-                <Share2 className="h-4 w-4" />
-                Share
-            </Button>
-        )
-    }
+    ]
 
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
                 <Button variant="outline" size="sm" className="gap-2">
                     <Share2 className="h-4 w-4" />
                     Share
                 </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={handleCopy} className="gap-2 cursor-pointer">
-                    {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
-                    Copy Link
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, '_blank')} className="gap-2 cursor-pointer">
-                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                    Post on X
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank')} className="gap-2 cursor-pointer">
-                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
-                    </svg>
-                    LinkedIn
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+                <DialogHeader className="text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                        <Share2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <DialogDescription className="text-center font-medium text-muted-foreground pb-2">
+                        You are currently sharing:
+                    </DialogDescription>
+                    <DialogTitle className="text-center text-xl font-bold">
+                        {title}
+                    </DialogTitle>
+                </DialogHeader>
+
+                <div className="flex flex-col items-center justify-center py-6 space-y-6">
+                    <div className="flex items-center justify-center space-x-4">
+                        <Share className="h-16 w-16 text-primary/20 animate-pulse" />
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        {socialLinks.map((social) => {
+                            const Icon = social.icon
+                            return (
+                                <button
+                                    key={social.name}
+                                    onClick={social.onClick}
+                                    className={cn(
+                                        "flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2",
+                                        social.color
+                                    )}
+                                    title={social.name}
+                                >
+                                    <Icon className="h-5 w-5" />
+                                </button>
+                            )
+                        })}
+                    </div>
+
+                    <div className="w-full pt-4 border-t">
+                        <div className="flex items-center space-x-2">
+                            <div className="grid flex-1 gap-2">
+                                <label htmlFor="link" className="sr-only">
+                                    Link
+                                </label>
+                                <input
+                                    id="link"
+                                    className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                    defaultValue={shareUrl}
+                                    readOnly
+                                />
+                            </div>
+                            <Button type="button" size="sm" className="px-3" onClick={handleCopy}>
+                                <span className="sr-only">Copy</span>
+                                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </DialogContent>
+        </Dialog>
     )
 }
