@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://opentoolbox.online"),
   title: {
     default: "OpenToolBox - Free Online Developer & Security Tools",
     template: "%s | OpenToolBox"
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
   keywords: [
     "developer tools",
     "online tools",
+    "free tools",
     "json formatter",
     "image converter",
     "password generator",
@@ -55,10 +57,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://opentoolbox.io", // Replace with actual domain when live
+    url: "https://opentoolbox.online",
     title: "OpenToolBox - Free Online Developer & Security Tools",
     description: "Secure, fast, and free online tools for developers and creators. No server-side processing.",
     siteName: "OpenToolBox",
+  },
+  alternates: {
+    canonical: './',
   },
   twitter: {
     card: "summary_large_image",

@@ -30,7 +30,7 @@ export function constructMetadata({
             "nextjs",
             ...keywords,
         ],
-        authors: [{ name: "VoidCraftr", url: "https://voidcraftr.com" }],
+        authors: [{ name: "VoidCraftr", url: "https://opentoolbox.online" }],
         creator: "VoidCraftr",
         openGraph: {
             title: `${title} - OpenToolbox`,
@@ -53,7 +53,7 @@ export function constructMetadata({
             images: [image],
             creator: "@voidcraftr",
         },
-        metadataBase: new URL("https://OpenToolBox-demo.vercel.app"), // Replace with actual domain when deployed
+        metadataBase: new URL("https://opentoolbox.online"),
         alternates: {
             canonical: canonical,
         },

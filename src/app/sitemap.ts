@@ -1,7 +1,7 @@
 import { tools } from '@/config/tools';
 import { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://tools.voidcraftr.com';
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://opentoolbox.online';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const toolUrls = tools.map((tool) => ({
