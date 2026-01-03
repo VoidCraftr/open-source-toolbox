@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "OpenToolBox - Free Online Developer & Security Tools",
     template: "%s | OpenToolBox"
   },
-  description: "A comprehensive collection of free, privacy-focused, and secure developer tools. JSON Formatter, Image Converter, Password Generator, and more. 100% Client-side privacy.",
+  description: "OpenToolBox is the Ultimate Developer Toolbox. A comprehensive collection of 100% free, privacy-focused, and secure online tools. 100% Client-side processing means your data never leaves your browser. JSON Formatter, Base64 Encoder, Image Tools, and more.",
   keywords: [
     // Brand
     "OpenToolbox", "free developers tools", "privacy focused tools", "secure online tools",
