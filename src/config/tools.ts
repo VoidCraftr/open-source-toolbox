@@ -199,6 +199,7 @@ export const tools: ToolMetadata[] = [
         category: "text",
         icon: Type,
         isNew: true,
+        isPopular: true,
     },
     {
         slug: "text-to-handwriting",
@@ -207,6 +208,7 @@ export const tools: ToolMetadata[] = [
         category: "text",
         icon: Pen,
         isNew: true,
+        isPopular: true,
     },
 
     // --- General/Consumer Tools ---
@@ -225,6 +227,7 @@ export const tools: ToolMetadata[] = [
         category: "general",
         icon: Scale,
         isNew: true,
+        isPopular: true,
     },
     {
         slug: "stopwatch",
@@ -241,6 +244,7 @@ export const tools: ToolMetadata[] = [
         category: "general",
         icon: Shuffle,
         isNew: true,
+        isPopular: true,
     },
     // --- Social Tools ---
     {
